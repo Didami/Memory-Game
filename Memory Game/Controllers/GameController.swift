@@ -32,17 +32,21 @@ class GameController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         return container
     }()
     
+    let spacing: CGFloat = 8
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .clear
+        cv.isScrollEnabled = false
         
         cv.delegate = self
         cv.dataSource = self
         cv.register(MemoryCell.self, forCellWithReuseIdentifier: MemoryCell.identifier)
-        cv.backgroundColor = .clear
         
         return cv
     }()
@@ -66,10 +70,13 @@ class GameController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
         bottomContainer.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: bottomContainer.topAnchor).isActive = true
-        collectionView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.standardSpacing).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: -Constants.standardSpacing).isActive = true
+        collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -Constants.doubleSpacing).isActive = true
     }
+    
+    var memoryCards = [MemoryCard]()
+    var difficulty = Difficulty.easy
     
     // MARK: - Delegate methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -77,12 +84,19 @@ class GameController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return difficulty.cardsCount()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return difficulty.cellSize(collectionSize: collectionView.frame.size, spacing: spacing)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MemoryCell.identifier, for: indexPath) as? MemoryCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .secondColor
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
     }
 }

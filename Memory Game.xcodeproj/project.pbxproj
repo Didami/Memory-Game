@@ -15,6 +15,7 @@
 		72E307F32A4A523800D4A3C7 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E307F22A4A523800D4A3C7 /* ViewComponents.swift */; };
 		72E307F62A4A538D00D4A3C7 /* Extensions+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E307F52A4A538D00D4A3C7 /* Extensions+Constants.swift */; };
 		72E307F82A4A55AC00D4A3C7 /* CellComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E307F72A4A55AC00D4A3C7 /* CellComponents.swift */; };
+		72E307FB2A4A57C500D4A3C7 /* MemoryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E307FA2A4A57C500D4A3C7 /* MemoryCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		72E307F22A4A523800D4A3C7 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
 		72E307F52A4A538D00D4A3C7 /* Extensions+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Constants.swift"; sourceTree = "<group>"; };
 		72E307F72A4A55AC00D4A3C7 /* CellComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellComponents.swift; sourceTree = "<group>"; };
+		72E307FA2A4A57C500D4A3C7 /* MemoryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				72E307DC2A4A4FCA00D4A3C7 /* AppDelegate.swift */,
 				72E307DE2A4A4FCA00D4A3C7 /* SceneDelegate.swift */,
+				72E307F92A4A57B000D4A3C7 /* Models */,
 				72E307F42A4A538200D4A3C7 /* Helpers */,
 				72E307F12A4A522900D4A3C7 /* Components */,
 				72E307F02A4A50E200D4A3C7 /* Controllers */,
@@ -95,6 +98,14 @@
 				72E307F52A4A538D00D4A3C7 /* Extensions+Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		72E307F92A4A57B000D4A3C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				72E307FA2A4A57C500D4A3C7 /* MemoryCard.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 				72E307F62A4A538D00D4A3C7 /* Extensions+Constants.swift in Sources */,
 				72E307F32A4A523800D4A3C7 /* ViewComponents.swift in Sources */,
 				72E307E12A4A4FCA00D4A3C7 /* GameController.swift in Sources */,
+				72E307FB2A4A57C500D4A3C7 /* MemoryCard.swift in Sources */,
 				72E307DD2A4A4FCA00D4A3C7 /* AppDelegate.swift in Sources */,
 				72E307DF2A4A4FCA00D4A3C7 /* SceneDelegate.swift in Sources */,
 				72E307F82A4A55AC00D4A3C7 /* CellComponents.swift in Sources */,
