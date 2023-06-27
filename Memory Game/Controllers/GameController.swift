@@ -89,6 +89,7 @@ class GameController: UIViewController, UICollectionViewDelegateFlowLayout, UICo
     private func startGame(at difficulty: Difficulty) {
         self.difficulty = difficulty
         matchedPairs = 0
+        secondsRemaining = difficulty == .easy ? 20 : difficulty == .medium ? 60 : 120
         memoryCards.removeAll()
         for imgName in cardImages.shuffled().prefix(difficulty.cardsCount()/2) {
             memoryCards.append(MemoryCard(imageName: imgName, isFlipped: false))
