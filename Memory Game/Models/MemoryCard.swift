@@ -39,3 +39,5 @@ enum Difficulty {
         }
     }
 }
+
+public let cardImages = Array(1...12).map({ "\($0)" })

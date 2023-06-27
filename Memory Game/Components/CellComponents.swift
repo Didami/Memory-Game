@@ -11,11 +11,24 @@ class MemoryCell: UICollectionViewCell {
     
     static let identifier = "memoryCellId"
     
+    var memoryCard: MemoryCard? {
+        didSet {
+            if let memoryCard = memoryCard {
+                UIView.transition(with: imageView, duration: 0.25, options: .transitionCrossDissolve) {
+                    self.imageView.image = memoryCard.isFlipped ? UIImage(named: memoryCard.imageName) : nil
+                }
+            }
+        }
+    }
+    
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.backgroundColor = .white
-        iv.contentMode = .scaleAspectFit
+        iv.backgroundColor = .secondColor
+        iv.layer.masksToBounds = true
+        iv.layer.cornerRadius = 12
+        iv.contentMode = .scaleAspectFill
+        iv.image = nil
         return iv
     }()
     
@@ -25,16 +38,14 @@ class MemoryCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        backgroundColor = .secondColor
-        layer.masksToBounds = true
-        layer.cornerRadius = 12
+        backgroundColor = .clear
         
         addSubview(imageView)
         
         imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         imageView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        imageView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
     
     required init?(coder: NSCoder) {
